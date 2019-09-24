@@ -254,6 +254,29 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#posts" class="toc-h1 toc-link" data-title="Posts">Posts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#add-posts" class="toc-h2 toc-link" data-title="Add Posts">Add Posts</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-single-post" class="toc-h2 toc-link" data-title="Fetch Single Post">Fetch Single Post</a>
+                  </li>
+                  <li>
+                    <a href="#change-post-active-status" class="toc-h2 toc-link" data-title="Change Post Active Status">Change Post Active Status</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-user-specific-posts" class="toc-h2 toc-link" data-title="Fetch user specific posts">Fetch user specific posts</a>
+                  </li>
+                  <li>
+                    <a href="#update-single-posts" class="toc-h2 toc-link" data-title="Update Single Posts">Update Single Posts</a>
+                  </li>
+                  <li>
+                    <a href="#like-or-unlike-single-post" class="toc-h2 toc-link" data-title="Like or unlike Single Post">Like or unlike Single Post</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='http://nugeninfo.com'>CodeQuery Cover API Docs</a></li>
@@ -679,6 +702,285 @@
 <td>specifications</td>
 <td>Array</td>
 <td>Specifications must be in array</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+<h1 id='posts'>Posts</h1><h2 id='add-posts'>Add Posts</h2>
+<blockquote>
+<p>Success-Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="err">HTTP</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Error-Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP</span><span class="w"> </span><span class="mi">422</span><span class="w"> </span><span class="err">Unprocessable</span><span class="w"> </span><span class="err">entity</span><span class="w">
+</span><span class="p">{</span><span class="w">
+     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to add post"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Add Post</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>POST https://code-query.herokuapp.com/v1/posts</code></p>
+<h3 id='query-parameters-10'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>name of post</td>
+</tr>
+<tr>
+<td>detail</td>
+<td>String</td>
+<td>description of post</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>String</td>
+<td>Photo of post</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>Array of string</td>
+<td>tags of current post in array</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+<h2 id='fetch-single-post'>Fetch Single Post</h2>
+<blockquote>
+<p>Success-Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="err">HTTP</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"post"</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"js"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"c++"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"djfhjdhfjhdjhfdjhfjdhfjd dfhdfjhdjfh jdhhfjfhsksjd jdchfksfh kdhfkdhfkjdh jkhfdg jkf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"js baics"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/8737hjdfh73.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-23T05:59:20.127Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-23T06:14:24.359Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Error-Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP</span><span class="w"> </span><span class="mi">422</span><span class="w"> </span><span class="err">Unprocessable</span><span class="w"> </span><span class="err">entity</span><span class="w">
+</span><span class="p">{</span><span class="w">
+     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Post not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>fetch single post detail</p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET https://code-query.herokuapp.com/v1/posts/:id</code>
+<code>GET https://code-query.herokuapp.com/v1/posts/1</code></p>
+<h3 id='query-parameters-11'>Query Parameters</h3>
+<p>Send post id in url as shown</p>
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+<h2 id='change-post-active-status'>Change Post Active Status</h2>
+<blockquote>
+<p>Success-Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="err">HTTP</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Error-Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP</span><span class="w"> </span><span class="mi">422</span><span class="w"> </span><span class="err">Unprocessable</span><span class="w"> </span><span class="err">entity</span><span class="w">
+</span><span class="p">{</span><span class="w">
+     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to change post status"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Change Post active status from true to false</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>POST https://code-query.herokuapp.com/v1/changePostStatus</code></p>
+<h3 id='query-parameters-12'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>is_active</td>
+<td>Boolean</td>
+<td>true or false</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+<h2 id='fetch-user-specific-posts'>Fetch user specific posts</h2>
+<blockquote>
+<p>Success-Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="err">HTTP</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"posts"</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"js"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"c++"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"djfhjdhfjhdjhfdjhfjdhfjd dfhdfjhdjfh jdhhfjfhsksjd jdchfksfh kdhfkdhfkjdh jkhfdg jkf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"js baics"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/8737hjdfh73.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-23T05:59:20.127Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-23T06:14:24.359Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Fetch user specific posts</p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>GET https://code-query.herokuapp.com/v1/fetchUserSpecificPosts</code></p>
+<h3 id='query-parameters-13'>Query Parameters</h3>
+<p>No parameters</p>
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+<h2 id='update-single-posts'>Update Single Posts</h2>
+<blockquote>
+<p>Success-Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="err">HTTP</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Error-Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP</span><span class="w"> </span><span class="mi">422</span><span class="w"> </span><span class="err">Unprocessable</span><span class="w"> </span><span class="err">entity</span><span class="w">
+</span><span class="p">{</span><span class="w">
+     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to update post"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Update Post</p>
+<h3 id='http-request-14'>HTTP Request</h3>
+<p><code>POST https://code-query.herokuapp.com/v1/updatePost</code></p>
+<h3 id='query-parameters-14'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>name of post</td>
+</tr>
+<tr>
+<td>detail</td>
+<td>String</td>
+<td>description of post</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>String</td>
+<td>Photo of post</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>Array of string</td>
+<td>tags of current post in array</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+<h2 id='like-or-unlike-single-post'>Like or unlike Single Post</h2>
+<blockquote>
+<p>Success-Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="err">HTTP</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Error-Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP</span><span class="w"> </span><span class="mi">422</span><span class="w"> </span><span class="err">Unprocessable</span><span class="w"> </span><span class="err">entity</span><span class="w">
+</span><span class="p">{</span><span class="w">
+     </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unable to update"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Like or Unlike Single post</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>POST https://code-query.herokuapp.com/v1/likes</code></p>
+<h3 id='query-parameters-15'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>post_id</td>
+<td>String</td>
+<td>id of current post</td>
 </tr>
 </tbody></table>
 
