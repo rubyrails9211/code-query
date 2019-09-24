@@ -384,3 +384,270 @@ specifications | Array | Specifications must be in array
  User must be authorized. Send user token in the header.
 </aside>
 
+# Posts
+
+## Add Posts
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Unable to add post"
+}
+
+```
+
+Add Post
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/posts`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | String | name of post
+detail | String | description of post
+photo | String | Photo of post
+tags | Array of string | tags of current post in array
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+## Fetch Single Post
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1,
+  "post":  {
+        "id": 1,
+        "user_id": 1,
+        "tags": [
+            "js",
+            "c++"
+        ],
+        "detail": "djfhjdhfjhdjhfdjhfjdhfjd dfhdfjhdjfh jdhhfjfhsksjd jdchfksfh kdhfkdhfkjdh jkhfdg jkf",
+        "name": "js baics",
+        "photo": "/uploads/8737hjdfh73.jpg",
+        "is_active": true,
+        "created_at": "2019-09-23T05:59:20.127Z",
+        "updated_at": "2019-09-23T06:14:24.359Z"
+    }
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Post not found"
+}
+
+```
+
+fetch single post detail
+
+### HTTP Request
+
+`GET https://code-query.herokuapp.com/v1/posts/:id`
+`GET https://code-query.herokuapp.com/v1/posts/1`
+
+### Query Parameters
+
+Send post id in url as shown
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
+## Change Post Active Status
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Unable to change post status"
+}
+
+```
+
+Change Post active status from true to false
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/changePostStatus`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+is_active | Boolean | true or false
+
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
+## Fetch user specific posts
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1,
+  "posts":  [
+    {
+        "id": 1,
+        "user_id": 1,
+        "tags": [
+            "js",
+            "c++"
+        ],
+        "detail": "djfhjdhfjhdjhfdjhfjdhfjd dfhdfjhdjfh jdhhfjfhsksjd jdchfksfh kdhfkdhfkjdh jkhfdg jkf",
+        "name": "js baics",
+        "photo": "/uploads/8737hjdfh73.jpg",
+        "is_active": true,
+        "created_at": "2019-09-23T05:59:20.127Z",
+        "updated_at": "2019-09-23T06:14:24.359Z"
+    }
+  ]
+}
+
+```
+
+
+Fetch user specific posts
+
+### HTTP Request
+
+`GET https://code-query.herokuapp.com/v1/fetchUserSpecificPosts`
+
+### Query Parameters
+
+No parameters
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+## Update Single Posts
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Unable to update post"
+}
+
+```
+Update Post
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/updatePost`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+name | String | name of post
+detail | String | description of post
+photo | String | Photo of post
+tags | Array of string | tags of current post in array
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
+## Like or unlike Single Post
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Unable to update"
+}
+
+```
+
+Like or Unlike Single post
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/likes`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+post_id | String | id of current post
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
