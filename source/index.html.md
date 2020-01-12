@@ -651,3 +651,273 @@ post_id | String | id of current post
 <aside class="success">
  User must be authorized. Send user token in the header.
 </aside>
+
+
+# Queries
+
+## Add Query
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "title can't be blank"
+}
+
+```
+
+Add Query
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/queries`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+title | String | title of query
+description | String | description of query
+category | String | Category of query
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
+## Fetch Queries
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+[
+    {
+        "id": 1,
+        "user_id": 3,
+        "title": "Javascript",
+        "description": "About javascrip related doubt",
+        "category": "others",
+        "created_at": "2020-01-12T10:16:57.300Z",
+        "updated_at": "2020-01-12T10:16:57.300Z",
+        "user_name": "shilpa"
+    }
+]
+
+```
+Fetch all Queries
+
+### HTTP Request
+
+`GET https://code-query.herokuapp.com/v1/queries`
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
+## Delete Query
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Unable to delete query"
+}
+
+```
+
+Delete Query
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/deleteQuery`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | Integer | ID of query
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+# Blogs
+
+## Add Blog
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "title can't be blank"
+}
+
+```
+
+Add Query
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/blogs`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+title | String | title of blogs
+description | String | description of blogs
+tags | Array | tags of blogs
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
+## Fetch Current User Blogs
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+[
+    {
+        "id": 2,
+        "user_id": 3,
+        "title": "Javascript Functions",
+        "description": "Testing testing",
+        "tags": [
+            "js"
+        ],
+        "created_at": "2020-01-12T10:32:55.289Z",
+        "updated_at": "2020-01-12T10:32:55.289Z"
+    }
+]
+
+```
+Fetch all current user blogs
+
+### HTTP Request
+
+`GET https://code-query.herokuapp.com/v1/fetchUserBlogs`
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
+## Fetch All Blogs
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+[
+    {
+        "id": 2,
+        "user_id": 3,
+        "title": "Javascript Functions",
+        "description": "Testing testing",
+        "tags": [
+            "js"
+        ],
+        "created_at": "2020-01-12T10:32:55.289Z",
+        "updated_at": "2020-01-12T10:32:55.289Z"
+    }
+]
+
+```
+Fetch all blogs(for other users acc to specifications)
+
+### HTTP Request
+
+`GET https://code-query.herokuapp.com/v1/blogs`
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+## Delete Blog
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Unable to delete blog"
+}
+
+```
+
+Delete Query
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/deleteBlog`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | Integer | ID of blog
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
