@@ -960,6 +960,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 id | Integer | ID of query
 body | text | body of comment
+parent_id | Integer | Parent comment ID (incase of reply to comment)
 
 <aside class="success">
  User must be authorized. Send user token in the header.
@@ -972,31 +973,49 @@ body | text | body of comment
 ```json
 
 HTTP 200 OK
-{
-    "msg": 1,
-    "comments": [
-        {
-            "id": 1,
-            "user_id": 3,
-            "query_id": 2,
-            "body": "testing comment",
-            "created_at": "2020-01-14T05:15:26.580Z",
-            "updated_at": "2020-01-14T05:15:26.580Z",
-            "parent_id": null,
-            "user_name": "shilpa"
-        },
-        {
-            "id": 2,
-            "user_id": 3,
-            "query_id": 2,
-            "body": "testing comment 1",
-            "created_at": "2020-01-14T10:07:12.245Z",
-            "updated_at": "2020-01-14T10:07:12.245Z",
-            "parent_id": null,
-            "user_name": "shilpa"
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "user_id": 3,
+        "query_id": 2,
+        "body": "testing comment",
+        "created_at": "2020-01-14T05:15:26.580Z",
+        "updated_at": "2020-01-14T05:15:26.580Z",
+        "parent_id": null,
+        "user_name": "shilpa",
+        "comment_replies": [
+            {
+                "body": "testing comment under 1",
+                "user_id": 3,
+                "user_name": "shilpa",
+                "created_at": "2020-01-15T07:16:44.038592",
+                "query_id": 2,
+                "id": 6,
+                "parent_id": 1
+            },
+            {
+                "body": "testing again comment under 1",
+                "user_id": 3,
+                "user_name": "shilpa",
+                "created_at": "2020-01-15T14:59:25.168593",
+                "query_id": 2,
+                "id": 7,
+                "parent_id": 1
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "user_id": 3,
+        "query_id": 2,
+        "body": "testing comment 1",
+        "created_at": "2020-01-14T10:07:12.245Z",
+        "updated_at": "2020-01-14T10:07:12.245Z",
+        "parent_id": null,
+        "user_name": "shilpa",
+        "comment_replies": []
+    }
+]
 
 ```
 
