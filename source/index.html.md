@@ -982,7 +982,8 @@ HTTP 200 OK
             "body": "testing comment",
             "created_at": "2020-01-14T05:15:26.580Z",
             "updated_at": "2020-01-14T05:15:26.580Z",
-            "parent_id": null
+            "parent_id": null,
+            "user_name": "shilpa"
         },
         {
             "id": 2,
@@ -991,7 +992,8 @@ HTTP 200 OK
             "body": "testing comment 1",
             "created_at": "2020-01-14T10:07:12.245Z",
             "updated_at": "2020-01-14T10:07:12.245Z",
-            "parent_id": null
+            "parent_id": null,
+            "user_name": "shilpa"
         }
     ]
 }
