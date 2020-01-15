@@ -707,14 +707,15 @@ category | String | Category of query
 HTTP 200 OK
 [
     {
-        "id": 1,
+        "id": 2,
         "user_id": 3,
-        "title": "Javascript",
-        "description": "About javascrip related doubt",
+        "title": "js",
+        "description": "js testing",
         "category": "others",
-        "created_at": "2020-01-12T10:16:57.300Z",
-        "updated_at": "2020-01-12T10:16:57.300Z",
-        "user_name": "shilpa"
+        "created_at": "2020-01-14T05:14:44.596Z",
+        "updated_at": "2020-01-14T05:14:44.596Z",
+        "user_name": "shilpa",
+        "comments_count": 4
     }
 ]
 
@@ -921,3 +922,105 @@ id | Integer | ID of blog
 </aside>
 
 
+#Comments
+
+## Create Comment
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Not Allowed to answer the query"
+}
+
+```
+
+Create Comment
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/comments`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | Integer | ID of query
+body | text | body of comment
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+## Get all query Comments
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+    "msg": 1,
+    "comments": [
+        {
+            "id": 1,
+            "user_id": 3,
+            "query_id": 2,
+            "body": "testing comment",
+            "created_at": "2020-01-14T05:15:26.580Z",
+            "updated_at": "2020-01-14T05:15:26.580Z",
+            "parent_id": null
+        },
+        {
+            "id": 2,
+            "user_id": 3,
+            "query_id": 2,
+            "body": "testing comment 1",
+            "created_at": "2020-01-14T10:07:12.245Z",
+            "updated_at": "2020-01-14T10:07:12.245Z",
+            "parent_id": null
+        }
+    ]
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Body can't be blank"
+}
+
+```
+
+Get all comments of queries
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/getQueryComments`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | Integer | ID of query
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
