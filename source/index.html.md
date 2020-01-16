@@ -1082,6 +1082,7 @@ Create Test, Only expert is allowed to create test
 ```json
 {
     "category": "js",
+    "timer": 60,
     "body": [
             {
                 "question": "What is javascript",
@@ -1145,6 +1146,7 @@ HTTP 200 OK
     {
         "id": 1,
         "user_id": 1,
+        "timer": 60,
         "body": [
             {
                 "answers": [
@@ -1230,6 +1232,7 @@ HTTP 200 OK
     {
         "id": 1,
         "user_id": 1,
+        "timer": 60,
         "body": [
             {
                 "answers": [
