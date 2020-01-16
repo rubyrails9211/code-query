@@ -1045,3 +1045,250 @@ id | Integer | ID of query
 <aside class="success">
  User must be authorized. Send user token in the header.
 </aside>
+
+# Tests
+
+## Create Test
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Category can't be blank"
+}
+
+```
+
+Create Test, Only expert is allowed to create test
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/tests`
+
+### Query Parameters
+```json
+{
+    "category": "js",
+    "body": [
+            {
+                "question": "What is javascript",
+                    "answers": [
+                    {
+                        "title": "test1",
+                        "is_correct": true
+                    },
+                    {
+                        "title": "test2",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test3",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test4",
+                        "is_correct": false
+                    }
+                ]
+            },
+            {
+                "question": "What is javascript",
+                    "answers": [
+                    {
+                        "title": "test1",
+                        "is_correct": true
+                    },
+                    {
+                        "title": "test2",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test3",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test4",
+                        "is_correct": false
+                    }
+                ]
+            }   
+    ]
+} 
+```
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
+## Fetch all Test ( of Experts)
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+[
+    {
+        "id": 1,
+        "user_id": 1,
+        "body": [
+            {
+                "answers": [
+                    {
+                        "title": "test1",
+                        "is_correct": true
+                    },
+                    {
+                        "title": "test2",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test3",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test4",
+                        "is_correct": false
+                    }
+                ],
+                "question": "What is javascript"
+            },
+            {
+                "answers": [
+                    {
+                        "title": "test1",
+                        "is_correct": true
+                    },
+                    {
+                        "title": "test2",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test3",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test4",
+                        "is_correct": false
+                    }
+                ],
+                "question": "What is javascript"
+            }
+        ],
+        "category": "js",
+        "created_at": "2020-01-16T04:54:42.785Z",
+        "updated_at": "2020-01-16T04:54:42.785Z",
+        "user_name": "admin"
+    }
+]
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Not Authorized to upload test"
+}
+
+```
+Fetch all tests of experts
+
+### HTTP Request
+
+`GET https://code-query.herokuapp.com/v1/tests`
+
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
+## Fetch User specification tests
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+[
+    {
+        "id": 1,
+        "user_id": 1,
+        "body": [
+            {
+                "answers": [
+                    {
+                        "title": "test1",
+                        "is_correct": true
+                    },
+                    {
+                        "title": "test2",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test3",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test4",
+                        "is_correct": false
+                    }
+                ],
+                "question": "What is javascript"
+            },
+            {
+                "answers": [
+                    {
+                        "title": "test1",
+                        "is_correct": true
+                    },
+                    {
+                        "title": "test2",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test3",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test4",
+                        "is_correct": false
+                    }
+                ],
+                "question": "What is javascript"
+            }
+        ],
+        "category": "js",
+        "created_at": "2020-01-16T04:54:42.785Z",
+        "updated_at": "2020-01-16T04:54:42.785Z",
+        "user_name": "admin"
+    }
+]
+```
+
+Fetch all tests related to user specifications
+
+### HTTP Request
+
+`GET https://code-query.herokuapp.com/v1/fetchUserSpecificationTests`
+
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
