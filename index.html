@@ -333,6 +333,14 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#dashboard-details" class="toc-h1 toc-link" data-title="Dashboard Details">Dashboard Details</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-count-of-dashboard" class="toc-h2 toc-link" data-title="Get count of dashboard">Get count of dashboard</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='http://nugeninfo.com'>CodeQuery Cover API Docs</a></li>
@@ -1669,6 +1677,25 @@
 <p>Fetch all tests related to user specifications</p>
 <h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET https://code-query.herokuapp.com/v1/fetchUserSpecificationTests</code></p>
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+<h1 id='dashboard-details'>Dashboard Details</h1><h2 id='get-count-of-dashboard'>Get count of dashboard</h2>
+<blockquote>
+<p>Success-Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"query_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"post_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"blog_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"test_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Fetch all dashboard details</p>
+<h3 id='http-request-28'>HTTP Request</h3>
+<p><code>GET https://code-query.herokuapp.com/v1/dashboardDetailsCount</code></p>
 
 <aside class="success">
  User must be authorized. Send user token in the header.
