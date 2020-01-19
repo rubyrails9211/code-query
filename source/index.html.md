@@ -1295,3 +1295,29 @@ Fetch all tests related to user specifications
 <aside class="success">
  User must be authorized. Send user token in the header.
 </aside>
+
+# Dashboard Details
+
+## Get count of dashboard
+
+> Success-Response:
+
+```json
+HTTP 200 OK
+    {
+        "query_count": 1,
+        "post_count": 0,
+        "blog_count": 1,
+        "test_count": 0
+    }
+```
+
+Fetch all dashboard details
+
+### HTTP Request
+
+`GET https://code-query.herokuapp.com/v1/dashboardDetailsCount`
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
