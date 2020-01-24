@@ -1072,7 +1072,7 @@ HTTP 422 Unprocessable entity
 
 ```
 
-Create Test, Only expert is allowed to create test
+Create Test, Only expert and admin is allowed to create test
 
 ### HTTP Request
 
@@ -1317,6 +1317,96 @@ Fetch all dashboard details
 ### HTTP Request
 
 `GET https://code-query.herokuapp.com/v1/dashboardDetailsCount`
+
+<aside class="success">
+ User must be authorized. Send user token in the header.
+</aside>
+
+
+
+## Save Test Answers
+
+> Success-Response:
+
+```json
+
+HTTP 200 OK
+{
+  "msg": 1
+}
+
+```
+
+> Error-Response
+
+```json
+HTTP 422 Unprocessable entity
+{
+     "msg": 0,
+     "error": "Test can't be blank"
+}
+
+```
+
+Save Test Answer
+
+### HTTP Request
+
+`POST https://code-query.herokuapp.com/v1/test_answers`
+
+### Query Parameters
+```json
+{
+    "category": "js",
+    "timer": 60,
+    "body": [
+            {
+                "question": "What is javascript",
+                    "answers": [
+                    {
+                        "title": "test1",
+                        "is_correct": true,
+                        "attempted": true
+                    },
+                    {
+                        "title": "test2",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test3",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test4",
+                        "is_correct": false
+                    }
+                ]
+            },
+            {
+                "question": "What is javascript",
+                    "answers": [
+                    {
+                        "title": "test1",
+                        "is_correct": true
+                    },
+                    {
+                        "title": "test2",
+                        "is_correct": false,
+                        "attempted": true
+                    },
+                    {
+                        "title": "test3",
+                        "is_correct": false
+                    },
+                    {
+                        "title": "test4",
+                        "is_correct": false
+                    }
+                ]
+            }   
+    ]
+} 
+```
 
 <aside class="success">
  User must be authorized. Send user token in the header.
